@@ -4,4 +4,4 @@
 
 ## This is an example of my projects I've written
 
-To see it copy and paste this link in your browser for access -->> https://github.com/edwardlowe77/SQL
+To view my projects of written SQL code click this -->> https://github.com/edwardlowe77/SQL
