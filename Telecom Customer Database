@@ -1,3 +1,5 @@
+#This project uses data from telecom customer database shown below:
+
 -- TELECOM DATA TABLE #1: products 
 CREATE TABLE products (
     product_id INTEGER PRIMARY KEY,
@@ -16,7 +18,8 @@ VALUES
     (4, 'Fiber Optic Internet', 'Internet', 500, 1000, 79.99),
     (5, 'Family Plan', 'Cell Phone Service', NULL, NULL, 25.00);
     
-    
+  #This is the second table that I will be using for the "IN" function to combine both tables when pulling data from both:
+
 -- TELECOM DATA TABLE #2: customer_subscriptions
 CREATE TABLE customer_subscriptions (
     customer_id TEXT PRIMARY KEY,
@@ -33,3 +36,23 @@ VALUES
     ('345678901234', 3, 79.99, 'alice.davis@example.com'),
     ('456789012345', 4, 79.99, 'bob.johnson@example.com'),
     ('567890123456', 1, 49.99, 'susan.wilson@example.com');
+
+#I used SQL to query the telecom database using the similar data at other telecom companies like AT&T,T-Mobile,Verizon etc. I used the "IN" function to combine table 1 & 2 data together.
+
+#I wrote this SQL code to select the product names of all the Internet products types from table #1.
+SELECT product_name
+FROM products
+WHERE product_type="Internet";
+
+#I wrote this SQL code to select the customer IDs for all the customers who are subscribed to High-Speed Internet (product_id =1) from table #2.
+SELECT customer_id
+FROM customer_subscriptions
+WHERE product_id=1;
+
+#This is me using SQL to query and conjoin data from both tables and using the "IN" funciton. Then combining both while pulling data from both databases.
+SELECT email
+FROM customer_subscriptions
+WHERE product_id
+IN (SELECT product_id
+    FROM products
+    WHERE product_type="Internet");
