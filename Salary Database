@@ -1,3 +1,4 @@
+#This project uses data from the salary database. At any company when extracting information from employees salaries database.
 CREATE TABLE employees (
     employee_id INTEGER PRIMARY KEY,
     department TEXT,
@@ -22,20 +23,18 @@ VALUES
     (13, 'Engineering', 85000.00, 8),
     (14, 'Engineering', 92000.00, 10);
 
-SELECT department,salary
-FROM employees;
+#I used SQL to query the Salary database to calculate how much is spent per year on the salaries for each department.
 
+#Using the HAVING fucntion to figure out the total spent on the salaries for at least $300,000 for each department.
 SELECT department,SUM(salary) as total_spent
 FROM employees
 GROUP BY department
 HAVING total_spent>=300000;
 
-SELECT department, SUM(salary) as total_spent
+#Using Select function to select all the departments that pay an average of at least $70,000 per year.
+SELECT department, AVG(salary) as avg_salary
 FROM employees
 GROUP BY department
-HAVING total_spent>=300000;
+HAVING avg_salary>=70000;
 
-SELECT department, AVG(salary) as average_salary
-FROM employees
-GROUP BY department
-HAVING average_salary>=70000;
+
