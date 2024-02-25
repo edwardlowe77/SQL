@@ -18,7 +18,7 @@ VALUES
     (4, 'Fiber Optic Internet', 'Internet', 500, 1000, 79.99),
     (5, 'Family Plan', 'Cell Phone Service', NULL, NULL, 25.00);
     
-  #This is the second table that I will be using for the "IN" function to combine both tables when pulling data from both:
+ #This is the second table that I will be using for this project.
 
 -- TELECOM DATA TABLE #2: customer_subscriptions
 CREATE TABLE customer_subscriptions (
@@ -37,7 +37,7 @@ VALUES
     ('456789012345', 4, 79.99, 'bob.johnson@example.com'),
     ('567890123456', 1, 49.99, 'susan.wilson@example.com');
 
-#I used SQL to query the telecom database using the similar data at other telecom companies like AT&T,T-Mobile,Verizon etc. I used the "IN" function to combine table 1 & 2 data together.
+#I used SQL to query the telecom database using the similar data at other telecom companies like AT&T,T-Mobile,Verizon etc. 
 
 #I wrote this SQL code to select the product names of all the Internet products types from table #1.
 SELECT product_name
@@ -49,7 +49,7 @@ SELECT customer_id
 FROM customer_subscriptions
 WHERE product_id=1;
 
-#This is me using SQL to query and conjoin data from both tables and using the "IN" funciton. Then combining both while pulling data from both databases.
+#This is me using SQL to query and conjoin data from both tables and using the "IN" funciton. Then combining both while pulling data from both tables.
 SELECT email
 FROM customer_subscriptions
 WHERE product_id
