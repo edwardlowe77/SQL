@@ -1,3 +1,5 @@
+#This analysis utilized the following Fortune 500 dataset:
+
 CREATE TABLE fortune_companies (
     company_id INTEGER PRIMARY KEY,
     company_name TEXT,
@@ -56,9 +58,9 @@ VALUES
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
 
-SELECT *
-FROM fortune_companies;
+#Analysis
 
+ #Assign all the companies by "Small Cap", "Mid Cap", or "Large Cap" based on average employee tenure. 
 SELECT company_name,employees,
 CASE WHEN employees<=10 THEN "Small Cap"
 WHEN employees<=49 THEN "Mid Cap"
@@ -68,13 +70,19 @@ END AS "employee_turnover_rate"
 FROM fortune_companies
 GROUP BY employee_turnover_rate;
 
+#Which industries have an total sum revenue of at least $100 million, , and what are the total sum of revenues?
 SELECT industry,SUM(revenue) as company_capital
 FROM fortune_companies
 GROUP BY industry
 HAVING company_capital>=100;
 
-SELECT *
+#Which companies have maternity leave offered *or* at least 10 paid time off days?
+SELECT company_name
 FROM fortune_companies
 WHERE paid_time_off_days>=10
-OR maternity_leave_weeks>10
-ORDER BY paid_time_off_days asc;
+OR maternity_leave_weeks=1;
+
+#Which company in the Technology industry has the max revenue, and what's their revenue? 
+SELECT company_name, MAX(revenue)
+FROM fortune_companies
+WHERE industry = "Technology";
